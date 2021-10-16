@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <div> 
+      <form action="" th:action="@{/upload}" method="post" enctype="multipart/form-data">
+         <div>
+           <label for="InputEmail">邮箱</label>
+           <input type="email" name="email" id="InputEmail">
+         </div> 
+         <div>
+           <label for="InputName">名字</label>
+           <input type="text" name="username" id="InputName">
+         </div> 
+         <div>
+           <label for="InputFile">头像</label>
+           <input type="file" name="headerImg" id="InputFile">
+         </div> 
+         <div>
+           <label for="InputPhoto">生活照</label>
+           <input type="file" name="photos" id="InputPhoto" multiple="multiple">
+         </div>
+         <input type="submit" value="提交"> 
+      </form>
+  </div>
+</body>
+</html>

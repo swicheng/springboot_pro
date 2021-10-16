@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common :: base-css">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+
+   <!-- 从公共页中引入 头部信息 -->
+   <div th:replace="common:: #header-nav"></div>
+   
+   <!-- 从公共页中引入 左侧信息 -->
+   <div th:replace="common:: #left-nav"></div>
+   
+   <!-- 从公共页中引入 底部信息 -->
+   <div th:replace="common:: footer-infor"></div>
+
+</body>
+</html>

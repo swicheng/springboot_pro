@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <form action="saveEmployee" method="post">
+      <table>
+         <tbody align="center">
+            <tr>
+               <td>ID</td> 
+               <td><input name="id" type="text"></td>
+               <td th:text="${id}"></td>
+            </tr>
+            <tr>
+               <td>用户名</td> 
+               <td><input name="username" type="text"></td>
+               <td th:text="${username}"></td>
+            </tr>
+            <tr>
+               <td>密码</td> 
+               <td><input name="password" type="password"></td>
+               <td th:text="${password}"></td>
+            </tr>
+            <tr>
+               <td>邮箱</td> 
+               <td><input name="email" type="email"></td>
+               <td th:text="${email}"></td>
+            </tr>
+            <tr><td colspan="3"> <input type="submit" value="提交">  </td></tr>
+         </tbody>
+      </table>
+   </form>
+</body>
+</html>

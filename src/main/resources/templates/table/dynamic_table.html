@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+   
+    table{
+      border-collapse: collapse; 
+    } 
+    
+    td{
+      width: 100px;
+      text-align: center;
+      height: 50px;
+    }
+    
+    
+   .row-fluid , .span6 ul{
+     float: right;
+     
+   }
+   
+   .row-fluid .span6:first-child{
+     line-height: 54px;
+     height: 54px;
+   }
+   
+   .span6 , ul li{
+     float: left;
+   }
+   
+  ul{
+    width: 500px;
+    list-style: none;
+  }
+  
+   li{
+    width: 30px;
+    height: 20px;
+    border: 1px black solid;
+    text-align: center;
+  }
+  
+  li.previous , li.next{
+    width: 100px;
+    height: 20px;
+    border: 1px black solid;
+  }
+  
+  li.previous a , li.next a{
+    color: navy;
+  }
+  
+  ul a{
+   text-decoration: none;
+   color: maroon;
+  } 
+  
+   ul li:hover > a , ul li:hover ,.active , .active a{
+	 color: white;
+	 font-weight: bold;
+	 background-color: blue;
+     opacity: .5;
+  }
+  
+  .but{
+    background-color: red;
+    opacity: .8;
+    width: 50px;
+    height: 30px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
+   
+  
+</style>
+</head>
+<body>
+   <table border="1">
+     <thead>
+       <tr> 
+         <th>#</th>
+         <th>ID</th>
+         <th>姓名</th>
+         <th>年龄</th>
+         <th>地址</th> 
+         <th>操作</th> 
+       </tr> 
+     </thead>
+     <tbody>
+       <tr th:each="p,stats:${page.records}"> 
+        <td th:text="${stats.count}"></td>
+        <td th:text="${p.id}"></td>
+        <td th:text="${p.name}"></td>
+        <td th:text="${p.age}"></td>
+        <td th:text="${p.address}"></td>
+        <td>  
+         <a href="#" th:href="@{/person/delete/{id}(id=${p.id},pn=${page.current})}"> 
+           <button class="but">删除</button> 
+         </a>
+        </td>
+       </tr>
+     </tbody>
+   </table>
+   
+   <div class="row-fluid">
+      <div class="span6">
+         <div class="dataTables_info"> 
+            当前第 [[${page.current}]] 页  共计 [[${page.pages}]] 页  共[[${page.total}]]条记录
+         </div>
+      </div>
+      <div class="span6">
+        <ul> 
+           <li class="previous"><a href="#">← Previous</a></li>
+           <li th:class="${num==page.current?'active':''}"  th:each="num:${#numbers.sequence(1,page.pages)}">
+               <a href="#" th:href="@{/dynamic_table(pn=${num})}">[[${num}]]</a></li>
+           <li class="next"><a href="#">Next →</a></li>
+        </ul>
+      </div>
+   </div>
+</body>
+</html>

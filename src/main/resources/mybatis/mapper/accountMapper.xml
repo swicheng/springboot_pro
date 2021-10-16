@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.admin.mapper.AccountMapper">
+
+  <cache type="com.atguigu.admin.cache.MyCache">
+    <property name="id" value="123"/>
+  </cache>
+  
+  <select id="QueryBalanceById" parameterType="Integer" resultType="Double">
+     select balance
+        from account
+          where id = #{id}   
+  </select>
+  
+  <select id="QueryAllAccount"  resultType="Account">
+     select *
+        from account 
+  </select>
+  
+  <insert id="addAccount" parameterType="Account">
+     insert into account 
+            values(#{id},#{username},#{balance})
+  </insert>
+  
+  <update id="updateAccountDevBalance" parameterType="Account">
+    update account
+       set balance = balance - #{balance}
+       where id = #{id} 
+  </update>
+  
+  <update id="updateAccountAddBalance" parameterType="Account">
+    update account
+       set balance = balance + #{balance}
+       where id = #{id} 
+  </update>
+  
+  <delete id="deleteAccountByid" parameterType="Integer">
+     delete from account where id = #{id}
+  </delete>
+  
+  
+</mapper>

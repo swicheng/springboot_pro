@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+  #backto-div{
+     width: 200px;
+     height: 50px;
+     margin: auto;
+     border-radius: 5px;
+     text-align: center;
+     justify-content: center;
+     padding-top: 15px;
+     border:1px black solid;
+  }
+  
+  #backto-div:hover{
+    border:1px #0d6e5b solid;
+  }
+  
+  #backto-div a{
+      text-decoration: none;
+      color: black;
+      font-size: 20px;
+  }
+</style>
+</head>
+<body>
+   <h1 align="center" th:text="${status}"></h1>
+   <div id="backto-div">
+     <a th:href="@{/main.html}">Back To Home</a>
+   </div>
+   <p th:text="${message}"> </p>
+</body>
+</html>
