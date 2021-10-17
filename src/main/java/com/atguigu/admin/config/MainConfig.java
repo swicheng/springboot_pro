@@ -10,9 +10,9 @@ import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.http.MediaType;
+import org.springframework.web.accept.ParameterContentNegotiationStrategy;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.ServletWebSocketHandlerRegistration;
@@ -33,6 +33,9 @@ import com.atguigu.admin.listener.MyListener;
 import com.atguigu.admin.servlet.MyServlet;
 
 import ch.qos.logback.core.joran.event.stax.StaxEventRecorder;
+
+import java.util.Arrays;
+import java.util.HashMap;
 
 /**
  * @author ��
@@ -72,6 +75,8 @@ public class MainConfig {
 	public WebSocketConfigurer WebSocketConfigurer() {
 		
 		return new WebSocketConfigurer() {
+
+
 
 			@Override
 			public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
@@ -123,24 +128,39 @@ public class MainConfig {
  
 	@Bean
     public WebMvcConfigurer webMvcConfigurer() {
-		return new WebMvcConfigurer() {
+		return  new WebMvcConfigurer() {
 
-			
-			// ���������
+			@Override
+			public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+
+				HashMap<String , MediaType> map = new HashMap<>();
+				map.put("json",MediaType.APPLICATION_JSON);
+				map.put("xml",MediaType.APPLICATION_XML);
+				map.put("swic", MediaType.parseMediaType("application/swic"));
+
+
+				ParameterContentNegotiationStrategy parameterStrategy = new ParameterContentNegotiationStrategy(map);
+				parameterStrategy.setParameterName("for");
+
+				configurer.strategies(Arrays.asList(parameterStrategy));
+
+			}
+
 			@Override
 			public void addInterceptors(InterceptorRegistry registry) {
-				
 				InterceptorRegistration register =registry.addInterceptor(interceptor);
-				
+
 				register.excludePathPatterns("/","/login","/css/**","/js/**");
-				
+
 				// TODO Auto-generated method stub
 //				InterceptorRegistration register = registry.addInterceptor(new LoginInterceptor());
 //			    // �������·��
 //				register.addPathPatterns("/**"); // �������󶼻ᱻ���� ������̬��Դ
 //				// ��ӷ���·��
-//				register.excludePathPatterns("/","/login","/css/**","/js/**" , "/transfer" , "/transfer/**" , "/readData","/readData/*");
+//				register.excludePathPatterns("/","/login","/css/**","/js/**" , "/transfer" , "/transfer/**" , "/readData","/readData/*")
 			}
+
+
 			
 			
 			
