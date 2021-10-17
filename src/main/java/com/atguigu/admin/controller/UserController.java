@@ -25,6 +25,7 @@ public class UserController {
 	@GetMapping("/person")
 	public Person person() {
 
+		System.out.println("45665446546");
        Person person = new Person(1001, "swic", 22, "深圳");
 
 		return person;
