@@ -24,8 +24,10 @@ public class UserController {
 	@ResponseBody
 	@GetMapping("/person")
 	public Person person() {
-		
-		return new Person(1001, "swic", 22, "深圳");
+
+       Person person = new Person(1001, "swic", 22, "深圳");
+
+		return person;
 		
 	}
 	
