@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.atguigu.admin.bean.Person;
 import com.atguigu.admin.bean.User;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * @author 孙
@@ -36,6 +37,9 @@ public class UserController {
 	
 	@RequestMapping("/api")
 	public Callable<User> api(){
+
+
+
 		return new Callable<User>() {
 
 			@Override

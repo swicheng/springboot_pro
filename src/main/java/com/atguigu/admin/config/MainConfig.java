@@ -127,15 +127,15 @@ public class MainConfig {
 	
  
 	@Bean
-    public WebMvcConfigurer webMvcConfigurer() {
-		return  new WebMvcConfigurer() {
+	public WebMvcConfigurer webMvcConfigurer() {
+		return new WebMvcConfigurer() {
 
 			@Override
 			public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
 
-				HashMap<String , MediaType> map = new HashMap<>();
-				map.put("json",MediaType.APPLICATION_JSON);
-				map.put("xml",MediaType.APPLICATION_XML);
+				HashMap<String, MediaType> map = new HashMap<>();
+				map.put("json", MediaType.APPLICATION_JSON);
+				map.put("xml", MediaType.APPLICATION_XML);
 				map.put("swic", MediaType.parseMediaType("application/swic"));
 
 
