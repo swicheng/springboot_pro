@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author ÀÔ
+ * @author ??
  * @data 2021-8-14
  * 
  */
@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler({ArithmeticException.class , NullPointerException.class})
 	public String handlerException(Exception e) {
 		
-		log.info("“Ï≥£ «:{ }",e);
+		log.info("????:{ }",e);
 		return "login";
 	}
 	

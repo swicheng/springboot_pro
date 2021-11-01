@@ -2,10 +2,7 @@ package com.atguigu.admin.controller;
 
 import java.util.concurrent.Callable;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.atguigu.admin.bean.Person;
 import com.atguigu.admin.bean.User;
@@ -23,12 +20,12 @@ public class UserController {
 
 	
 	@ResponseBody
-	@GetMapping("/person")
-	public Person person(){
+	@GetMapping("/person/{id}")
+	public Person person(@PathVariable("id") String id){
 
 
        Person person = new Person(1001, "swic", 22, "深圳");
-
+		System.out.println(1/0);
 		return person;
 		
 	}

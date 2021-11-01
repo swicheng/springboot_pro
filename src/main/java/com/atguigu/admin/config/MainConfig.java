@@ -12,7 +12,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.web.accept.ParameterContentNegotiationStrategy;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.ServletWebSocketHandlerRegistration;
@@ -36,6 +38,8 @@ import ch.qos.logback.core.joran.event.stax.StaxEventRecorder;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Properties;
 
 /**
  * @author ��
@@ -129,6 +133,22 @@ public class MainConfig {
 	@Bean
 	public WebMvcConfigurer webMvcConfigurer() {
 		return new WebMvcConfigurer() {
+
+
+
+//			@Override
+//			public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
+//
+//				SimpleMappingExceptionResolver exceptionResolver = new SimpleMappingExceptionResolver();
+//
+//				Properties proEx = new Properties();
+//				proEx.put("java.lang.ArithmeticException","/error/500");
+//				proEx.put("java.lang.Exception","/error/500");
+//
+//				exceptionResolver.setExceptionMappings(proEx);
+//
+//				resolvers.add(exceptionResolver);
+//			}
 
 			@Override
 			public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {

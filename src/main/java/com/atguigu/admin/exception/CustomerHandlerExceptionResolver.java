@@ -12,11 +12,11 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * @author 孙
+ * @author ??
  * @data 2021-8-14
  * 
  */
-//@Order(value = Ordered.HIGHEST_PRECEDENCE)  // 最高优先级  最先执行
+//@Order(value = Ordered.HIGHEST_PRECEDENCE)  // ????????  ???????
 //@Component
 public class CustomerHandlerExceptionResolver implements HandlerExceptionResolver{
 
@@ -31,6 +31,7 @@ public class CustomerHandlerExceptionResolver implements HandlerExceptionResolve
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		
 		return new ModelAndView();
 	}

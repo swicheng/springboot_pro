@@ -4,12 +4,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- * @author 孙
+ * @author ??
  * @data 2021-8-14
  * 
  */
 
-@ResponseStatus(value = HttpStatus.FORBIDDEN , reason = "用户数量太多")
+@ResponseStatus(value = HttpStatus.FORBIDDEN , reason = "??????????")
 public class UserTooManyException extends RuntimeException{
 
 	/**
